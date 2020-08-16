@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Set View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SetViewController" customModule="Set_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5S-nE-5w6">
+                                <rect key="frame" x="170.66666666666666" y="827" width="73" height="30"/>
+                                <state key="normal" title="New game"/>
+                                <connections>
+                                    <action selector="touchNewGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d1G-s7-zA8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQs-go-B8x">
+                                <rect key="frame" x="164.66666666666666" y="792" width="85" height="30"/>
+                                <state key="normal" title="Add 3 Cards"/>
+                                <connections>
+                                    <action selector="touchAddCardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ode-0O-uju"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iZ-cN-kZp">
+                                <rect key="frame" x="173.66666666666666" y="763.66666666666663" width="66.666666666666657" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6BK-gB-Jc9" customClass="CardContainerView" customModule="Set_game" customModuleProvider="target">
+                                <rect key="frame" x="20" y="44" width="374" height="709.66666666666663"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="MJl-Sb-nnt" appends="YES" id="4Pi-fe-BYg"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4L-Qi-KFL">
+                                <rect key="frame" x="20" y="766" width="60" height="96"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <accessibility key="accessibilityConfiguration" identifier="deck">
+                                    <accessibilityTraits key="traits" button="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="R4L-Qi-KFL" secondAttribute="height" multiplier="5:8" id="BQq-0E-92a"/>
+                                    <constraint firstAttribute="width" constant="60" id="d1n-ar-8Rl"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ipu-gt-vUJ">
+                                <rect key="frame" x="334" y="766" width="60" height="96"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="cXC-Z9-g9M"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                        <constraints>
+                            <constraint firstItem="6BK-gB-Jc9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="3ty-a2-cMi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ipu-gt-vUJ" secondAttribute="trailing" constant="20" id="OlL-JP-cZv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ipu-gt-vUJ" secondAttribute="bottom" id="QZP-eL-lZX"/>
+                            <constraint firstItem="g5S-nE-5w6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="YSC-h9-KNu"/>
+                            <constraint firstItem="OQs-go-B8x" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ybc-iq-eWQ"/>
+                            <constraint firstItem="OQs-go-B8x" firstAttribute="top" secondItem="3iZ-cN-kZp" secondAttribute="bottom" constant="8" id="Z5a-DC-bzJ"/>
+                            <constraint firstItem="3iZ-cN-kZp" firstAttribute="top" secondItem="6BK-gB-Jc9" secondAttribute="bottom" constant="10" id="bcL-w8-ZoD"/>
+                            <constraint firstItem="3iZ-cN-kZp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dIn-18-xq4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="g5S-nE-5w6" secondAttribute="bottom" constant="5" id="dN9-34-i9r"/>
+                            <constraint firstItem="6BK-gB-Jc9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gYa-N9-2qy"/>
+                            <constraint firstItem="Ipu-gt-vUJ" firstAttribute="width" secondItem="Ipu-gt-vUJ" secondAttribute="height" multiplier="5:8" id="kq2-0B-ycl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="R4L-Qi-KFL" secondAttribute="bottom" id="oTw-S7-i6N"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6BK-gB-Jc9" secondAttribute="trailing" constant="20" id="rA1-1W-J75"/>
+                            <constraint firstItem="g5S-nE-5w6" firstAttribute="top" secondItem="OQs-go-B8x" secondAttribute="bottom" constant="5" id="reT-u9-8QA"/>
+                            <constraint firstItem="R4L-Qi-KFL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="sC9-ta-Qde"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="addCardButton" destination="OQs-go-B8x" id="sYo-60-tAI"/>
+                        <outlet property="cardContainerView" destination="6BK-gB-Jc9" id="bMB-nS-47i"/>
+                        <outlet property="deckView" destination="R4L-Qi-KFL" id="8Dt-sy-Dpb"/>
+                        <outlet property="newGameButton" destination="g5S-nE-5w6" id="RBD-v0-Jks"/>
+                        <outlet property="pointLabel" destination="3iZ-cN-kZp" id="q00-IA-X9L"/>
+                        <outlet property="trashDeckView" destination="Ipu-gt-vUJ" id="nQP-dD-cAb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="MJl-Sb-nnt">
+                    <connections>
+                        <action selector="swipeCardCollectionView:" destination="BYZ-38-t0r" id="JxY-SD-htj"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="100.00000000000001" y="91.741071428571431"/>
+        </scene>
+    </scenes>
+</document>
