@@ -14,54 +14,65 @@ class Set {
     var isASet = false
     
     func chooseCard(atCardIndex index:Int){
+        isASet = false
         matchingOnLastChooseCard = false
-//        print(index)
         let card = cards[index]
         //deselect
         if selectedCard.contains(card) {
             selectedCard.remove(at: selectedCard.firstIndex(of: card)!)
             points -= 1
-            
             //select
         } else {
             selectedCard.append(card)
         }
+        if selectedCard.count == 3{
+            areSelectedCardsASet()
+        }
+    }
+    func areSelectedCardsASet(){
+        var matchedMap = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
+        for card in selectedCard {
+            matchedMap[0][card.colorNumber] += 1
+            matchedMap[1][card.number] += 1
+            matchedMap[2][card.shapeNumber] += 1
+            matchedMap[3][card.textureNumber] += 1
+        }
         
-        //if selected is 3, match the cards
-        if selectedCard.count == 3 {
-            var matchedMap = [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]
-            //loop through the cards and count its attributes
-            for card in selectedCard {
-                matchedMap[0][card.colorNumber] += 1
-                matchedMap[1][card.number] += 1
-                matchedMap[2][card.shapeNumber] += 1
-                matchedMap[3][card.textureNumber] += 1
-            }
+        let matchedMapContainsTwo = matchedMap.contains{ arrayOfInt in
+            return arrayOfInt.contains(2)
             
-            // if any of the Int contains 2
-            let matchedMapContainsTwo = matchedMap.contains{ arrayOfInt in
-                return arrayOfInt.contains(2)
-                
-            }
-            //matching happened
-            matchingOnLastChooseCard = true
-            isASet = !matchedMapContainsTwo
-            
-            //if a match add 3 points, if not a match subtract 5 points
-            points = matchedMapContainsTwo ? points - 5 : points + 3
-            for card in selectedCard{
-                if isASet {
-                    cards.remove(at: cards.firstIndex(of: card)!)
+        }
+        matchingOnLastChooseCard = true
+        isASet = matchedMapContainsTwo
+        
+        points = matchedMapContainsTwo ? points - 5 : points + 3
+    }
+    func removeCardsThatIsASet(){
+        for card in selectedCard{
+            cards.remove(at: cards.firstIndex(of: card)!)
+        }
+    }
+    
+    func returnSelectedCardIndices() -> [Int]{
+        var indices = [Int]()
+        for i in cards.indices{
+            for j in selectedCard.indices{
+                if cards[i] == selectedCard[j]{
+                    indices.append(i)
                 }
             }
         }
+        return indices
     }
+    
     func removeSelectedCards(){
+        if isASet{
+            removeCardsThatIsASet()
+        }
         if matchingOnLastChooseCard{
             selectedCard.removeAll()
         }
     }
-        
     
     init(){
         func cardAttributeGetter(){

@@ -14,28 +14,45 @@ class CardView: UIView {
     private var texture:TextureEnum!
     private var count:Int!
     private var color:ColorEnum!
-
+    var isFlipped:Bool!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .lightGray
+//        translatesAutoresizingMaskIntoConstraints = false
+        clipsToBounds = true
+        isFlipped = true
+        layer.borderColor = UIColor.black.cgColor
+        layer.cornerRadius = 8
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
-        switch count{
-        case 0:
-            drawShape(inCenter:CGPoint(x: bounds.size.width/2, y: bounds.height/2),context: context)
-        case 1:
-            let topHalf = CGPoint(x: bounds.size.width/2 , y: bounds.size.height/3)
-            let bottomHalf = CGPoint(x: bounds.size.width/2, y: bounds.size.height/1.5)
-            drawShape(inCenter: topHalf, context: context)
-            drawShape(inCenter: bottomHalf, context: context)
-        case 2:
-            let topHalf = CGPoint(x: bounds.size.width/2, y: bounds.size.height/4)
-            let bottomHalf = CGPoint(x: bounds.size.width/2, y: bounds.size.height/1.33)
-            let center = CGPoint(x: bounds.size.width/2, y: bounds.size.height/2)
-            drawShape(inCenter: topHalf, context: context)
-            drawShape(inCenter: center, context: context)
-            drawShape(inCenter: bottomHalf, context: context)
-        default:break
+        if !isFlipped{
+            switch count{
+            case 0:
+                drawShape(inCenter:CGPoint(x: bounds.size.width/2, y: bounds.height/2),context: context)
+            case 1:
+                let topHalf = CGPoint(x: bounds.size.width/2 , y: bounds.size.height/3)
+                let bottomHalf = CGPoint(x: bounds.size.width/2, y: bounds.size.height/1.5)
+                drawShape(inCenter: topHalf, context: context)
+                drawShape(inCenter: bottomHalf, context: context)
+            case 2:
+                let topHalf = CGPoint(x: bounds.size.width/2, y: bounds.size.height/4)
+                let bottomHalf = CGPoint(x: bounds.size.width/2, y: bounds.size.height/1.33)
+                let center = CGPoint(x: bounds.size.width/2, y: bounds.size.height/2)
+                drawShape(inCenter: topHalf, context: context)
+                drawShape(inCenter: center, context: context)
+                drawShape(inCenter: bottomHalf, context: context)
+            default:break
+            }
         }
     }
     
@@ -44,6 +61,7 @@ class CardView: UIView {
         self.texture = texture
         self.count = count
         self.color = color
+
     }
     
     func drawShape(inCenter center:CGPoint,context:CGContext){

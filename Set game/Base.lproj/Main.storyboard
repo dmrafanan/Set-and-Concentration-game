@@ -43,9 +43,9 @@
                                     <outletCollection property="gestureRecognizers" destination="MJl-Sb-nnt" appends="YES" id="4Pi-fe-BYg"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4L-Qi-KFL">
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="R4L-Qi-KFL">
                                 <rect key="frame" x="20" y="766" width="60" height="96"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="deck">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
@@ -54,9 +54,9 @@
                                     <constraint firstAttribute="width" constant="60" id="d1n-ar-8Rl"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ipu-gt-vUJ">
+                            <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ipu-gt-vUJ">
                                 <rect key="frame" x="334" y="766" width="60" height="96"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
