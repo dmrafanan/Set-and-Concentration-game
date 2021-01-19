@@ -10,7 +10,13 @@ import UIKit
 
 
 class CardContainerView: UIView {
-    lazy var grid = Grid(layout: .aspectRatio(0.625), frame: CGRect(x: 0, y: 0 , width: bounds.size.width, height: bounds.size.height))
+    override var bounds: CGRect {
+        didSet {
+            grid.frame = bounds
+            animateFrameChange()
+        }
+    }
+    lazy var grid = Grid(layout: .aspectRatio(0.625), frame: self.bounds)
     
     func addToCellCount(_ num:Int){
         grid.cellCount += num
@@ -51,4 +57,6 @@ class CardContainerView: UIView {
             
         }
     }
+    
 }
+

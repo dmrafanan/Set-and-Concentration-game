@@ -1,6 +1,6 @@
 import Foundation
 
-class Set {
+class SetGame {
     var cards = [Card]()
     
     var cardsInDeck = [Card]()
@@ -40,10 +40,9 @@ class Set {
         
         let matchedMapContainsTwo = matchedMap.contains{ arrayOfInt in
             return arrayOfInt.contains(2)
-            
         }
         matchingOnLastChooseCard = true
-        isASet = matchedMapContainsTwo
+        isASet = !matchedMapContainsTwo
         
         points = matchedMapContainsTwo ? points - 5 : points + 3
     }
@@ -65,15 +64,16 @@ class Set {
         return indices
     }
     
-    func removeSelectedCards(){
+    func removeSelectedAndSetCards(){
         if isASet{
             removeCardsThatIsASet()
         }
-        if matchingOnLastChooseCard{
-            selectedCard.removeAll()
-        }
+        removeSelectedCards()
+
     }
-    
+    func removeSelectedCards(){
+            selectedCard.removeAll()
+    }
     init(){
         func cardAttributeGetter(){
             var arr1 = [0,0,0,0]

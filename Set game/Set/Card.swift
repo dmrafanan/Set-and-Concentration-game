@@ -8,7 +8,11 @@
 
 import Foundation
 
-class Card:Equatable {
+class Card:Equatable,CustomStringConvertible {
+    var description: String {
+        return "\(number)\(shapeNumber)\(colorNumber)\(textureNumber)"
+    }
+    
     static func == (lhs: Card, rhs: Card) -> Bool {
         if lhs.colorNumber == rhs.colorNumber && lhs.number == rhs.number && lhs.shapeNumber == rhs.shapeNumber && lhs.textureNumber == rhs.textureNumber{
             return true

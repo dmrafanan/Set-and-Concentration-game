@@ -14,7 +14,14 @@ class CardView: UIView {
     private var texture:TextureEnum!
     private var count:Int!
     private var color:ColorEnum!
-    var isFlipped:Bool!
+    var isFlipped:Bool!{
+        didSet{
+            if isFlipped == true {
+                backgroundColor = .lightGray
+            }
+            setNeedsDisplay()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
