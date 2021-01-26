@@ -42,7 +42,8 @@ class SetGame {
             return arrayOfInt.contains(2)
         }
         matchingOnLastChooseCard = true
-        isASet = !matchedMapContainsTwo
+        //!is a set
+        isASet = matchedMapContainsTwo
         
         points = matchedMapContainsTwo ? points - 5 : points + 3
     }

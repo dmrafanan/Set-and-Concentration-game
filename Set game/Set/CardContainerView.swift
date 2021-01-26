@@ -23,7 +23,7 @@ class CardContainerView: UIView {
     }
     func animateFrameChange(){
         grid.cellCount = subviews.count
-        for i in subviews.indices{
+        for i in subviews.indices{
             let subview = subviews[i]
             
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {

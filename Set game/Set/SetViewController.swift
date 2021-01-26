@@ -110,14 +110,14 @@ class SetViewController: UIViewController {
         var cardsIndices = [Int]()
         var origRect = CGRect()
         
-        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { timer in
             counter += 1
             for view in viewsToBeRemoved{
                 self.collisionBehavior.addItem(view)
                 self.itemBehavior.addItem(view)
                 let push = UIPushBehavior(items: [view], mode: .instantaneous)
                 push.angle = CGFloat.random(in: 0...2*CGFloat.pi)
-                push.magnitude = 50
+                push.magnitude = 10
                 push.action = { [unowned push] in
                     push.dynamicAnimator?.removeBehavior(push)
                 }
@@ -145,10 +145,8 @@ class SetViewController: UIViewController {
                 self.game.cards.remove(at: self.game.cards.firstIndex(of: card)!)
 
                 let snap = UISnapBehavior(item: view, snapTo: self.trashDeckView.center)
-                snap.damping = 0.5
+                snap.damping = 0.3
                 self.animator.addBehavior(snap)
-//                view.frame = self.trashDeckView.bounds
-
             }
             if !self.deckView.subviews.isEmpty{
                 var count = 2
@@ -161,7 +159,6 @@ class SetViewController: UIViewController {
                     
                     self.game.cards.insert(card, at: cardsIndices[count])
                     self.cardContainerView.insertSubview(cardView, at: cardsIndices[count])
-                    print(cardsIndices[count])
                     cardView.isFlipped = false
                     
                     cardView.frame = frame
@@ -173,7 +170,6 @@ class SetViewController: UIViewController {
             self.game.removeSelectedCards()
             self.cardContainerView.animateFrameChange()
             self.updateBorderColor()
-//            print(self.game.cards)
         }
 
     }
@@ -197,7 +193,6 @@ class SetViewController: UIViewController {
         }
         cardContainerView.animateFrameChange()
         updateBorderColor()
-//        updateViewFromModel()
     }
     
     func createDeckOfCardViews(){
@@ -235,12 +230,11 @@ class SetViewController: UIViewController {
             cardView.layer.borderColor = UIColor.black.cgColor
             if game.matchingOnLastChooseCard && game.selectedCard.contains(card){
                 if !game.isASet{
-                    cardView.layer.borderWidth = 10
+                    cardView.layer.borderWidth = CGFloat(cardContainerView.subviews.count)*0.1
                     cardView.layer.borderColor = UIColor.red.cgColor
                 }
             } else if game.selectedCard.contains(card) {
-                print(card)
-                cardView.layer.borderWidth = 10
+                cardView.layer.borderWidth = CGFloat(cardContainerView.subviews.count)*0.1
                 cardView.layer.borderColor = UIColor.yellow.cgColor
             }
         }
