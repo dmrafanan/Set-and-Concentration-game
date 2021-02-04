@@ -6,5 +6,5 @@ How to play: https://brilliant.org/wiki/set-game/
 ## Concentration
 ![Concentration](https://j.gifs.com/OMWG0Q.gif)
 Technical Overview:\
-Core Graphics to draw shapes\
+Core Graphics to draw shapes
 
