@@ -8,5 +8,5 @@ How to play: https://brilliant.org/wiki/set-game/
 I made this to practice my animation skills and was interested in game development.\
 Technical Overview:\
 Core Graphics to draw shapes\
-Started 2020\
+Started 2020
 
